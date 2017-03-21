@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('confusionApp')
+angular.module('CMSApp')
         .controller('IndexController', ['$scope', '$stateParams', 'menuFactory', 'corporateFactory', function($scope, $stateParams, menuFactory, corporateFactory) {
             
             
@@ -67,24 +67,19 @@ angular.module('confusionApp')
 
         }])        
 
-        .controller('AboutController', ['$scope', '$stateParams', 'corporateFactory', function($scope, $stateParams, corporateFactory) {
-            $scope.showList = false;
-            $scope.list = {};
-            $scope.message="Loading ...";
-
-            corporateFactory.getLeaders().query(
-                function(response){
-                    $scope.list = response;
-                    $scope.showList = true;
-                },
-                function(response) {
-                    $scope.message = "Error: "+response.status + " " + response.statusText;
+        .controller('MapController', ['$scope', '$stateParams', function($scope, $stateParams) {
+            $scope.map = {
+                events: {
+                    tilesloaded: function (map) {
+                        $scope.$apply(function () {
+                            $log.info('this is the map instance', map);
+                        });
+                    }
                 }
-            );
-
+            }
         }])
 
-        .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+        .controller('ReportController', ['$scope', 'menuFactory', function($scope, menuFactory) {
             
             $scope.tab = 1;
             $scope.filtText = '';

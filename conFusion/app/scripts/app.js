@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('confusionApp', ['ui.router','ngResource'])
+angular.module('CMSApp', ['ui.router','ngResource'])
+
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
         
@@ -24,12 +25,12 @@ angular.module('confusionApp', ['ui.router','ngResource'])
             })
         
             // route for the aboutus page
-            .state('app.aboutus', {
-                url:'aboutus',
+            .state('app.map', {
+                url:'map',
                 views: {
                     'content@': {
-                        templateUrl : 'views/aboutus.html',
-                        controller  : 'AboutController'                  
+                        templateUrl : 'views/map.html',
+                        controller  : 'MapController'                  
                     }
                 }
             })
@@ -45,28 +46,28 @@ angular.module('confusionApp', ['ui.router','ngResource'])
                 }
             })
 
-            // route for the menu page
-            .state('app.menu', {
-                url: 'menu',
+            // route for the report page
+            .state('app.report', {
+                url: 'report',
                 views: {
                     'content@': {
-                        templateUrl : 'views/menu.html',
-                        controller  : 'MenuController'
+                        templateUrl : 'views/report.html',
+                        controller  : 'ReportController'
                     }
                 }
             })
 
-            // route for the dishdetail page
-            .state('app.dishdetails', {
-                url: 'menu/:id',
+            .state('app.socmedia', {
+                url: 'media',
                 views: {
                     'content@': {
-                        templateUrl : 'views/dishdetail.html',
-                        controller  : 'DishDetailController'
-                   }
+                        templateUrl : 'views/media.html',
+                        controller  : 'MediaController'
+                    }
                 }
-            });
+            })
     
         $urlRouterProvider.otherwise('/');
     })
+
 ;
