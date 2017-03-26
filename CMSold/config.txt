@@ -1,0 +1,2 @@
+Index  $scope.isCrisis = 0/1/2 (not/in/aftercrisis): get from /getstate URL
+User send report: POST to /report/:id. Structure of a report: {_id:'', itype:'', details:'', firstname:'', lastname:'', tel:''} 
