@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { routing } from './app.routing';
 import { Router } from '@angular/router';
-import { AngularFire , AuthProviders, AuthMethods } from  'angularfire2';
+import { AngularFire , AuthProviders, AuthMethods , FirebaseAuthState} from  'angularfire2';
 
 @Injectable()
 
@@ -15,8 +15,6 @@ export class AF {
     return this.af.auth.createUser({
       email : email,
       password : password,
-    }).then(() => {
-      this.router.navigate(['/pages/dashboard']);
     });
   }
 
@@ -24,8 +22,10 @@ export class AF {
     return this.af.auth.login({
       email: email ,
       password: password,
-    }).then(() => {
-      this.router.navigate(['/pages/dashboard']);
+    },
+    {
+      provider: AuthProviders.Password,
+      method: AuthMethods.Password,
     });
   }
 
@@ -33,8 +33,6 @@ export class AF {
     return this.af.auth.login({
       provider: AuthProviders.Google,
       method: AuthMethods.Popup,
-    }).then(() => {
-      this.router.navigate(['/pages/dashboard']);
     });
   }
 
@@ -42,8 +40,6 @@ export class AF {
     return this.af.auth.login ({
       provider: AuthProviders.Twitter,
       method: AuthMethods.Redirect,
-    }).then(() => {
-      this.router.navigate(['/pages/dashboard']);
     });
   }
 
@@ -51,8 +47,6 @@ export class AF {
     return this.af.auth.login ({
       provider: AuthProviders.Facebook,
       method: AuthMethods.Redirect,
-    }).then(() => {
-      this.router.navigate(['/pages/dashboard']);
     });
   }
 
@@ -60,8 +54,11 @@ export class AF {
    * Logs out the current user
    */
   logout() {
-    return this.af.auth.logout().then(() => {
-      this.router.navigate(['/pages/dashboard']);
-    });
+    return this.af.auth.logout();
   }
+/*
+  getUser() {
+    return this.state.auth;
+  }
+  */
 }
