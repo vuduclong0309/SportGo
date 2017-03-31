@@ -16,18 +16,22 @@ export class GoogleMaps {
 
     // TODO: do not load this each time as we already have the library after first attempt
     GoogleMapsLoader.load((google) => {
+      var map = new google.maps.Map(el, {
+          zoom: 11,
+          center: {lat: 41.876, lng: -87.624}
+        });
       new google.maps.KmlLayer({
-        url : 'http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml',
+        url : 'https://data.gov.sg/dataset/dengue-clusters/resource/ce15cf3c-702c-4573-96db-69c50e6cb7f8/view/7bb2a106-0e86-4f18-873b-726bb5b6f922',
         map : new google.maps.Map(el, {
-          center: {lat: 2.54, lng: 102.5},
-          zoom: 8,
+          center: {lat: 1.3756324, lng: 103.9351488},
+          zoom: 14,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         })
       })
     /*  ,
       new google.maps.Map(el, {
-        center: new google.maps.LatLng(44.5403, -78.5463),
-        zoom: 8,
+        center: new google.maps.LatLng(1.34, 103.68),
+        zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
     */

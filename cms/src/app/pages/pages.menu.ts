@@ -140,7 +140,7 @@ export const PAGES_MENU = [
         path: 'forms',
         data: {
           menu: {
-            title: 'Form Report',
+            title: 'Contact',
             icon: 'ion-compose',
             selected: false,
             expanded: false,

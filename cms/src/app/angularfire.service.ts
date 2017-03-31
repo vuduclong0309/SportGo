@@ -42,8 +42,6 @@ export class AF {
     return this.af.auth.login ({
       provider: AuthProviders.Twitter,
       method: AuthMethods.Redirect,
-    }).then(() => {
-      this.router.navigate(['/pages/dashboard']);
     });
   }
 
@@ -51,8 +49,6 @@ export class AF {
     return this.af.auth.login ({
       provider: AuthProviders.Facebook,
       method: AuthMethods.Redirect,
-    }).then(() => {
-      this.router.navigate(['/pages/dashboard']);
     });
   }
 
