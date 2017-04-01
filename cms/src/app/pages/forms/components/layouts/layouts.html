@@ -1,3 +1,4 @@
+<!--
 <div class="widgets">
 
   <div class="row">
@@ -43,3 +44,99 @@
     </div>
   </div>
 </div>
+
+
+        
+
+        
+        
+        
+                
+                
+                
+                    
+-->
+<div class="col-xs-12 col-sm-9">
+    <form class="form-horizontal" [formGroup]="reportForm" (ngSubmit)="SubmitForm()">
+          <div class="form-group row" [ngClass]="{ 'has-error' : !firstName.valid && !firstName.$pristine}">
+            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="firstName" [formControl]="firstName" [(ngModel)] = "reportForm.firstName"
+                               placeholder="Enter First Name" required>
+                        <span [hidden]="firstName.valid && !firstName.$pristine"
+                              class="help-block">Your First name is required.</span>
+                    </div>
+        </div>
+
+        <div class="form-group row" [ngClass]="{ 'has-error' : !lastName.valid}">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="lastName" [formControl]="lastName"
+                               placeholder="Enter Last Name" required>
+                        <span [hidden]="lastName.valid && !lastName.$pristine"
+                              class="help-block">Your Last name is required.</span>
+                    </div>
+        </div>
+
+        <div class="form-group row">
+                <label for="telnum" class="col-sm-3 control-label">Contact Tel.</label>
+                <div class="col-sm-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">(</div>
+                            <input type="tel" class="form-control" placeholder="Area code">
+                            <div class="input-group-addon">)</div>
+                        </div>
+                    
+                </div>
+                <div class="col-sm-5">
+                        <input type="tel" class="form-control" id="telnum" [formControl]="tel" placeholder="Tel. number">
+                </div>
+        </div>
+        <div class="form-group row" [ngClass]="{ 'has-error' : !location.valid}">
+                    <label for="location" class="col-sm-3 control-label">Location</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="location" [formControl]="location"
+                               placeholder="Enter Location of Crisis" required>
+                        <span [hidden]="location.valid && !location.$pristine"
+                              class="help-block">Please specify a location.</span>
+                    </div>
+        </div>
+        
+        <div class="form-group row"
+                     [ngClass]="{ 'has-error' : !itype.valid && !itype.$pristine }">
+                    <label for="itype" class="col-sm-3 control-label">Type of Crisis</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="itype" [formControl]="itype"
+                               placeholder="Enter Crisis Type">
+                        <span [hidden]="itype.valid && !itype.$pristine"
+                              class="help-block">Please specify type of crisis.</span>
+                    </div>
+        </div>
+
+        <div class="form-group row">
+                    <label for="report" class="col-sm-3 control-label">Your report</label>
+                    <div class="col-sm-9">
+                            <textarea id="report" class="form-control" rows="12"
+                                      [formControl]="description">
+                            </textarea>
+                    </div>
+                </div>
+        <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary" ng-disabled="!$invalid">Send
+                            report
+                        </button>
+                    </div>
+        
+               
+    </form>
+
+    
+</div>
+      <!--  <div class="col-xs-12 col-sm-3">
+            <h3>Your Current report:</h3>
+            <p>{{report.firstName}} {{report.lastName | uppercase }}</p>
+            <p>Contact Tel.: ({{report.tel.areaCode}}) {{report.tel.number}}</p>
+            <p>Reporting location: {{report.location}}</p>
+            <p>Type of Crisis: {{report.itype}}</p>
+            <p>Details: {{report.details}}</p>
+        </div>-->
