@@ -9,16 +9,22 @@ export class Layouts {
   public error: any;
   public reportForm:FormGroup;
   public submitted:boolean = false;
+  public firstName:AbstractControl;
+  public lastName:AbstractControl;
+  public tel:AbstractControl;
+  public location:AbstractControl;
+  public itype:AbstractControl;
+  public description:AbstractControl;
 
   constructor(fb:FormBuilder) {
 
     this.reportForm = fb.group({
       'firstName': ['', Validators.compose([Validators.required])],
-      'lastName': ['', Validators.compose([Validators.required)],
+      'lastName': ['', Validators.compose([Validators.required])],
       'tel': [''],
-      'location': ['', Validators.compose([Validators.required)],
-      'description': ['', Validators.compose([Validators.required)],
-      'itype' : ['', Validators.compose([Validators.required)],
+      'location': ['', Validators.compose([Validators.required])],
+      'description': ['', Validators.compose([Validators.required])],
+      'itype' : ['', Validators.compose([Validators.required])],
     });
     this.firstName = this.reportForm.controls['firstName'];
     this.lastName = this.reportForm.controls['lastName'];
@@ -29,15 +35,8 @@ export class Layouts {
   }
 
   public SubmitForm():void {
+
     this.submitted = true;
-    this.reportForm = fb.group({
-      'firstName': ['', Validators.compose([Validators.required])],
-      'lastName': ['', Validators.compose([Validators.required)],
-      'tel': [''],
-      'location': ['', Validators.compose([Validators.required)],
-      'description': ['', Validators.compose([Validators.required)],
-      'itype' : ['', Validators.compose([Validators.required)],
-    });
     
   }
 }
