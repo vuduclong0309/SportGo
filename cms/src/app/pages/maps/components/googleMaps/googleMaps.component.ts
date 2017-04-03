@@ -12,6 +12,7 @@ export class GoogleMaps {
   }
 
   ngAfterViewInit() {
+    /*
     let el = this._elementRef.nativeElement.querySelector('.google-maps');
 
     // TODO: do not load this each time as we already have the library after first attempt
@@ -28,13 +29,14 @@ export class GoogleMaps {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         })
       })
-    /*  ,
+      ,
       new google.maps.Map(el, {
         center: new google.maps.LatLng(1.34, 103.68),
         zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
-    */
+    
     });
+    */
   }
 }

@@ -7,7 +7,9 @@ import {Component} from '@angular/core';
 })
 export class Dashboard {
 
-  constructor() {
-  }
+  public crisisState = "Before Crisis";
+    constructor() {
+        this.crisisState = "Before Crisis";
+    }
 
 }
