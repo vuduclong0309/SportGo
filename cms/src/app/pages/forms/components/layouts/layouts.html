@@ -46,18 +46,18 @@
 </div>
 
 
-        
 
-        
-        
-        
-                
-                
-                
-                    
+
+
+
+
+
+
+
+
 -->
 <div class="col-xs-12 col-sm-9">
-    <form class="form-horizontal" [formGroup]="reportForm" (ngSubmit)="SubmitForm()">
+    <form class="form-horizontal" [formGroup]="reportForm" (ngSubmit)="SubmitForm(reportForm.value)">
           <div class="form-group row" [ngClass]="{ 'has-error' : !firstName.valid && !firstName.$pristine}">
             <label for="firstName" class="col-sm-3 control-label">First Name</label>
                     <div class="col-sm-9">
@@ -86,7 +86,7 @@
                             <input type="tel" class="form-control" placeholder="Area code">
                             <div class="input-group-addon">)</div>
                         </div>
-                    
+
                 </div>
                 <div class="col-sm-5">
                         <input type="tel" class="form-control" id="telnum" [formControl]="tel" placeholder="Tel. number">
@@ -101,7 +101,7 @@
                               class="help-block">Please specify a location.</span>
                     </div>
         </div>
-        
+
         <div class="form-group row"
                      [ngClass]="{ 'has-error' : !itype.valid && !itype.$pristine }">
                     <label for="itype" class="col-sm-3 control-label">Type of Crisis</label>
@@ -126,11 +126,11 @@
                             report
                         </button>
                     </div>
-        
-               
+
+
     </form>
 
-    
+
 </div>
       <!--  <div class="col-xs-12 col-sm-3">
             <h3>Your Current report:</h3>
