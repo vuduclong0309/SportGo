@@ -11,12 +11,13 @@ import 'style-loader!./feed.scss';
 export class Feed {
 
   public feed:Array<Object>;
-
+  public reportList:Array<Object>;
   constructor(private _feedService:FeedService) {
   }
 
   ngOnInit() {
     this._loadFeed();
+    this.loadReport();
   }
 
   expandMessage (message){
@@ -25,5 +26,9 @@ export class Feed {
 
   private _loadFeed() {
     this.feed = this._feedService.getData();
+  }
+
+  private loadReport() {
+    this.reportList = this._feedService.getReportList();
   }
 }
