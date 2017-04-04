@@ -10,5 +10,5 @@
   <div class="checkbox">
     <ba-checkbox [(ngModel)]="isChecked" [label]="'Check me out'" [ngModelOptions]="{standalone: true}"></ba-checkbox>
   </div>
-  <button type="submit" class="btn btn-danger">Submit</button>
+  <button type="submit" class="btn btn-danger" (click)="sendReport()">Submit</button>
 </form>

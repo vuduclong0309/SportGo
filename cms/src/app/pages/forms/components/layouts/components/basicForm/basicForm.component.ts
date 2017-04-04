@@ -5,7 +5,6 @@ import {Component} from '@angular/core';
   templateUrl: './basicForm.html',
 })
 export class BasicForm {
-
   constructor() {
   }
 

@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { Http } from '@angular/http';
 
 @Component({
   selector: 'inputs',
@@ -8,5 +6,5 @@ import { Http } from '@angular/http';
 })
 export class Inputs {
   constructor() {
-    }
+  }
 }
