@@ -10,7 +10,7 @@ import {FormReport}  from './formsreport';
   templateUrl: './layouts.html',
 })
 export class Layouts {
-
+  
   private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/";
   public postResponse: any;
   private formToSend = {};
@@ -55,9 +55,9 @@ export class Layouts {
       "crisisState" : "before"
     }
 
-    //this.addForms(this.formToSend);
-    this.formToSend = this.getForms();
-    console.log(this.formToSend);
+    this.addForms(this.formToSend);
+    //this.formToSend = this.getForms();
+    //console.log(this.formToSend);
   }
 
   getForms(): Observable<FormReport[]> {

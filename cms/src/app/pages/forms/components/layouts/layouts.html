@@ -1,45 +1,73 @@
-<div class="widgets">
+<div class="col-xs-12 col-sm-9">
+    <form class="form-horizontal" [formGroup]="reportForm" (ngSubmit)="SubmitForm(reportForm.value)">
+          <div class="form-group row" [ngClass]="{ 'has-error' : !firstName.valid && !firstName.$pristine}">
+            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="firstName" [formControl]="firstName" [(ngModel)] = "reportForm.firstName"
+                               placeholder="Enter First Name" required>
+                        <span [hidden]="firstName.valid && !firstName.$pristine"
+                              class="help-block">Your First name is required.</span>
+                    </div>
+        </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <ba-card title="Inline Form" baCardClass="with-scroll">
-        <inline-form></inline-form>
-      </ba-card>
-    </div>
-  </div>
+        <div class="form-group row" [ngClass]="{ 'has-error' : !lastName.valid}">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="lastName" [formControl]="lastName"
+                               placeholder="Enter Last Name" required>
+                        <span [hidden]="lastName.valid && !lastName.$pristine"
+                              class="help-block">Your Last name is required.</span>
+                    </div>
+        </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div>
-        <ba-card title="Basic Form" baCardClass="with-scroll">
-          <basic-form></basic-form>
-        </ba-card>
-      </div>
+        <div class="form-group row">
+                <label for="telnum" class="col-sm-3 control-label">Contact Tel.</label>
+                <div class="col-sm-4">
+                        <div class="input-group">
+                            <div class="input-group-addon">(</div>
+                            <input type="tel" class="form-control" placeholder="Area code">
+                            <div class="input-group-addon">)</div>
+                        </div>
 
-      <div>
-        <ba-card title="Horizontal Form" baCardClass="with-scroll">
-          <horizontal-form></horizontal-form>
-        </ba-card>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div>
-        <ba-card title="Form Without Labels" baCardClass="with-scroll">
-          <without-labels-form></without-labels-form>
-        </ba-card>
-      </div>
-      <div>
-        <ba-card title="Block Form" baCardClass="with-scroll">
-          <block-form></block-form>
-        </ba-card>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <ba-card title="Picture Uploader" baCardClass="with-scroll">
-        <ba-picture-uploader [picture]="profile.picture" [defaultPicture]="defaultPicture" [uploaderOptions]="uploaderOptions"></ba-picture-uploader>
-      </ba-card>
-    </div>
-  </div>
-</div>
+                </div>
+                <div class="col-sm-5">
+                        <input type="tel" class="form-control" id="telnum" [formControl]="tel" placeholder="Tel. number">
+                </div>
+        </div>
+        <div class="form-group row" [ngClass]="{ 'has-error' : !location.valid}">
+                    <label for="location" class="col-sm-3 control-label">Location</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="location" [formControl]="location"
+                               placeholder="Enter Location of Crisis" required>
+                        <span [hidden]="location.valid && !location.$pristine"
+                              class="help-block">Please specify a location.</span>
+                    </div>
+        </div>
+
+        <div class="form-group row"
+                     [ngClass]="{ 'has-error' : !itype.valid && !itype.$pristine }">
+                    <label for="itype" class="col-sm-3 control-label">Type of Crisis</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="itype" [formControl]="itype"
+                               placeholder="Enter Crisis Type">
+                        <span [hidden]="itype.valid && !itype.$pristine"
+                              class="help-block">Please specify type of crisis.</span>
+                    </div>
+        </div>
+
+        <div class="form-group row">
+                    <label for="report" class="col-sm-3 control-label">Your report</label>
+                    <div class="col-sm-9">
+                            <textarea id="report" class="form-control" rows="12"
+                                      [formControl]="description">
+                            </textarea>
+                    </div>
+                </div>
+        <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary" ng-disabled="!$invalid">Send
+                            report
+                        </button>
+                    </div>
+
+
+    </form>
