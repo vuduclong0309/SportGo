@@ -13,7 +13,7 @@ export class LeafletMaps {
   }
 
   ngAfterViewInit() {
-    let el = this._elementRef.nativeElement.querySelector('.leaflet-maps');
+    /*let el = this._elementRef.nativeElement.querySelector('.leaflet-maps');
 
     L.Icon.Default.imagePath = 'assets/img/theme/vendor/leaflet';
     var map = L.map(el).setView([51.505, -0.09], 13);
@@ -23,6 +23,6 @@ export class LeafletMaps {
 
     L.marker([51.5, -0.09]).addTo(map)
       .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-      .openPopup();
+      .openPopup();*/
   }
 }

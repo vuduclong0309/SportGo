@@ -9,7 +9,7 @@ import { RatingModule } from 'ng2-bootstrap';
 import { Forms } from './forms.component';
 import { Inputs } from './components/inputs';
 import { Layouts } from './components/layouts';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { StandardInputs } from './components/inputs/components/standardInputs';
 import { ValidationInputs } from './components/inputs/components/validationInputs';
 import { GroupInputs } from './components/inputs/components/groupInputs';
@@ -22,14 +22,14 @@ import { BlockForm } from './components/layouts/components/blockForm';
 import { HorizontalForm } from './components/layouts/components/horizontalForm';
 import { BasicForm } from './components/layouts/components/basicForm';
 import { WithoutLabelsForm } from './components/layouts/components/withoutLabelsForm';
-
 @NgModule({
   imports: [
     CommonModule,
     AngularFormsModule,
     NgaModule,
     RatingModule.forRoot(),
-    routing
+    routing,
+    ReactiveFormsModule
   ],
   declarations: [
     Layouts,

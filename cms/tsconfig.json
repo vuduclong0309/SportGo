@@ -20,7 +20,9 @@
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "typings/main.d.ts",
+    "typings/main/**",
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

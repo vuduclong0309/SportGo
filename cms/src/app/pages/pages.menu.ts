@@ -140,7 +140,7 @@ export const PAGES_MENU = [
         path: 'forms',
         data: {
           menu: {
-            title: 'Contact',
+            title: 'Report',
             icon: 'ion-compose',
             selected: false,
             expanded: false,
@@ -152,7 +152,7 @@ export const PAGES_MENU = [
             path: 'inputs',
             data: {
               menu: {
-                title: 'Form Inputs',
+                title: 'Report List',
               }
             }
           },
@@ -160,7 +160,7 @@ export const PAGES_MENU = [
             path: 'layouts',
             data: {
               menu: {
-                title: 'Form Layouts',
+                title: 'Send a Report',
               }
             }
           }
@@ -214,19 +214,20 @@ export const PAGES_MENU = [
             path: 'googlemaps',
             data: {
               menu: {
-                title: 'Google Maps',
+                title: 'Dengue Map',
               }
             }
           },
-          /*
+          
           {
             path: 'leafletmaps',
             data: {
               menu: {
-                title: 'Leaflet Maps',
+                title: 'Haze (PM 2.5) Maps',
               }
             }
           },
+          /*
           {
             path: 'bubblemaps',
             data: {
