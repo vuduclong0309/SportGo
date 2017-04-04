@@ -6,6 +6,7 @@ import {FormReport} from '../layouts/formsreport';
   templateUrl: './inputs.html',
 })
 export class Inputs {
+
   private formReport:any;
   private HAZEREPORT: FormReport[] = [
       {id : "Report-No1", firstName : "Phan Anh" , lastName : "Tuan" , telephone : "+(65) 97742291", location : "NTU Hall 14",
