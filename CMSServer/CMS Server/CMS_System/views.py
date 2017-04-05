@@ -27,7 +27,7 @@ class ReportDataViewSet(viewsets.ModelViewSet):
         print("hello")
         queryset = ReportData.objects.all()
         serializer = ReportDataSerializer(queryset,many=True)
-        return Response(serializer.data,headers={"Access-Control-Allow-Origin":"*"})
+        return Response(serializer.data)#,headers={"Access-Control-Allow-Origin":"*"})
 
     def retrieve(self, request, *args, **kwargs):
         try:
@@ -36,16 +36,13 @@ class ReportDataViewSet(viewsets.ModelViewSet):
         except Exception as e:
             queryset = ReportData.objects.filter(crisisType=self.kwargs['pk'])
             serializer = ReportDataSerializer(queryset,many=True)
-            return Response(serializer.data,headers={"Access-Control-Allow-Origin":"*"})
+            return Response(serializer.data)#,headers={"Access-Control-Allow-Origin":"*"})
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        headers["Access-Control-Allow-Origin"] = "*"
-        headers['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
-        headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, X-Auth-Token'
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def perform_create(self, serializer):
