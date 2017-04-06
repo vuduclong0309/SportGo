@@ -6,8 +6,22 @@
   </div>
 </div>-->
 
-<div class = "row">
-	<a>Fire Engine/Ambulance	995</a><br>
-	<a>Non-Emergency Ambulance	1777</a><br>
-	<a>Fire Hazard Reporting	1800 280 0000</a>
+<div class="feed-messages-container">
+  <div class="feed-message" *ngFor="let message of reportList">
+    
+    <div class="text-block text-message">
+      <div class="message-header">
+        <span class="author">{{ message.firstName }} {{ message.lastName}}</span>
+      </div>
+      <div class="message-content">
+        <span>From: {{ message.location }} </span>
+      </div>
+      <div class="message-content">
+        <span>Crisis Type: {{ message.crisisType }} </span>
+      </div>
+      <div class="message-content">
+        <span>Author Comment: {{ message.description}} </span>
+      </div>
+    </div>
+  </div>
 </div>

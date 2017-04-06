@@ -1,0 +1,19 @@
+<div class="container">
+  <div *ngFor="let message of reportList">
+        <span class = "col-sm-2"> Location: {{ message.location }} </span>
+        <span class = "col-sm-2"> Type: {{ message.crisisType}} </span>
+        <span class = "col-sm-2"> By:{{ message.firstName}} {{message.lastName}} </span>
+        <div class = "col-sm-2" (ngSubmit) = "deleteCrisis(message)">
+            <button type="submit" class="btn btn-danger" ng-disabled="!$invalid"> Delete
+            </button>
+        </div> 
+        <div class = "col-sm-2" (ngSubmit) = "verifyCrisis(message)">
+            <button type="submit" class="btn btn-success" ng-disabled="!$invalid"> Verify
+            </button>
+        </div> 
+        <div class = "col-sm-2" (ngSubmit) = "handledCrisis(message)">
+            <button type="submit" class="btn btn-warning" ng-disabled="!$invalid"> Acknowledge
+            </button>
+        </div> 
+  </div>
+</div>
