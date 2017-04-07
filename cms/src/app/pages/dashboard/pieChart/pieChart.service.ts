@@ -13,22 +13,22 @@ export class PieChartService {
       {
         color: pieColor,
         description: 'New Visits',
-        stats: '57,820',
+        stats: '230',
         icon: 'person',
       }, {
         color: pieColor,
-        description: 'Purchases',
-        stats: '$ 89,745',
-        icon: 'money',
-      }, {
-        color: pieColor,
         description: 'Active Users',
-        stats: '178,391',
+        stats: '70',
         icon: 'face',
       }, {
         color: pieColor,
-        description: 'Returned',
-        stats: '32,592',
+        description: 'Hazes',
+        stats: '40',
+        icon: 'refresh',
+      }, {
+        color: pieColor,
+        description: 'Dengues',
+        stats: '23',
         icon: 'refresh',
       }
     ];

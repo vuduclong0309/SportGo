@@ -10,8 +10,8 @@ import {FormReport}  from './formsreport';
   templateUrl: './layouts.html',
 })
 export class Layouts {
-  
-  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/";
+
+  private formsUrl = "http://10.27.127.105:8000/CMS_System/reportList/";
   public postResponse: any;
   private formToSend = {};
   public error: any;
@@ -68,7 +68,7 @@ export class Layouts {
 //  Observable<FormReport[]>
   addForms(body:Object) {
     let bodyString = JSON.stringify(body); // Stringify payload
-    let headers      = new Headers({ 'Content-Type': 'application/json', "CORS": false, "Access-Control-Allow-Origin" : "*"}); // ... Set content type to JSON
+    let headers      = new Headers({ 'Content-Type': 'application/json', "Access-Control-Allow-Origin" : "*"}); // ... Set content type to JSON
     let options       = new RequestOptions({ headers: headers }); // Create a request option
 
     console.log("Starting to post a request");

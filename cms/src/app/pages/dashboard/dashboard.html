@@ -1,36 +1,20 @@
 <div class="row">
-  <a> System State : {{crisisState}} </a>
+  <h1 align="center"> System State : {{crisisState}} </h1>
 </div>
 
-
-<!--
 <div class="row">
-  <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
-                     title="Acquisition Channels" baCardClass="traffic-panel medium-card">
-    <traffic-chart></traffic-chart>
-  </ba-card>
-
-  <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
-           title="Users by Country" baCardClass="medium-card">
-    <users-map></users-map>
-  </ba-card>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <pie-chart></pie-chart>
+  </div>
 </div>
--->
+
 <div class="row">
-  <!--<div class="col-xlg-9 col-xl-6 col-lg-6  col-md-12 col-sm-12 col-xs-12">
+  <div class="col-xlg-9 col-xl-6 col-lg-6  col-md-12 col-sm-12 col-xs-12">
     <div class="row">
-      <ba-card class="col-xlg-8 col-xl-12 col-lg-12 col-md-7 col-sm-12 col-xs-12"
-               title="Revenue" baCardClass="medium-card">
-        <line-chart></line-chart>
-      </ba-card>
-      <ba-card class="col-xlg-4 col-xl-12 col-lg-12 col-md-5 col-sm-12 col-xs-12"
-               baCardClass="popular-app medium-card">
-        <popular-app></popular-app>
+      <ba-card class="col-xlg-8 col-xl-12 col-lg-12 col-md-7 col-sm-12 col-xs-12" title="Current Weather">
+        <iframe src="https://www.meteoblue.com/en/weather/widget/three/singapore-island_singapore_1880249?geoloc=fixed&nocurrent=0&noforecast=0&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 460px;height: 645px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/en/weather/forecast/week/singapore-island_singapore_1880249?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank" align="center">MeteoBlue</a></div>
       </ba-card>
     </div>
-  </div>-->
-  <div class="col-xlg-9 col-xl-6 col-lg-6  col-md-12 col-sm-12 col-xs-12">
-      <iframe src="https://www.meteoblue.com/en/weather/widget/three/singapore-island_singapore_1880249?geoloc=fixed&nocurrent=0&noforecast=0&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 460px;height: 645px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/en/weather/forecast/week/singapore-island_singapore_1880249?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>
   </div>
   <div class="col-xlg-3 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
     <ba-card title="Feed"
@@ -41,15 +25,51 @@
 
 </div>
 
-<!--<div class="row shift-up">
-  <ba-card class="col-xlg-3 col-lg-6 col-md-12 col-sm-12 col-xs-12" title="To Do List"
-           baCardClass="xmedium-card feed-comply-panel with-scroll todo-panel">
-    <todo></todo>
+<div class="row shift-up">
+  <ba-card class="col-xlg-3 col-lg-6 col-md-12 col-sm-12 col-xs-12" title="Haze Guideline">
+    <div>
+      <table border="2">
+        <thead>
+          <tr>
+            <td>24-Hour PSI</td>
+            <td>Healthy Persons</td>
+            <td>Elderly, Pregnant, Woman, Children</td>
+            <td>Person with Chronic Lung Disease, Heart Disease</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>≤100 (Good/Moderate)</td>
+            <td>Normal activities</td>
+            <td>Normal activities</td>
+            <td>Normal activities</td>
+          </tr>
+          <tr>
+            <td>101-200 (Unhealthy)</td>
+            <td>Reduce prolonged or strenuous outdoor work</td>
+            <td>Minimise prolonged or strenuous outdoor work</td>
+            <td>Avoid prolonged or strenuous outdoor work</td>
+          </tr>
+          <tr>
+            <td>201-300 (Very Unhealthy)</td>
+            <td>Avoid prolonged or strenuous outdoor work</td>
+            <td>Minimise outdoor work</td>
+            <td>Avoid outdoor work</td>
+          </tr>
+          <tr>
+            <td>&gt; 300 (Hazardous)</td>
+            <td>Minimise outdoor work</td>
+            <td>Avoid outdoor work</td>
+            <td>Avoid outdoor work</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <p align="center"><a href="https://www.moh.gov.sg/content/moh_web/home/pressRoom/Current_Issues/2014/haze.html">Source</a></p>
+    </div>
   </ba-card>
-  <ba-card class="col-xlg-6 col-lg-6 col-md-12 col-sm-12 col-xs-12" title="Calendar"
+  <ba-card class="col-xlg-6 col-lg-6 col-md-12 col-sm-12 col-xs-12" title="Singapore Public Holiday Calendar"
            baCardClass="xmedium-card feed-comply-panel with-scroll calendar-panel">
     <calendar></calendar>
   </ba-card>
-</div>-->
-
-
+</div>

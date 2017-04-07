@@ -21,7 +21,7 @@ export class BaThemeConfigProvider {
 
     // main functional color scheme
     this.colorScheme = {
-      primary: '#00abff',
+      primary: '#1b70ef',
       info: '#40daf1',
       success: '#8bd22f',
       warning: '#e7ba08',
@@ -30,8 +30,8 @@ export class BaThemeConfigProvider {
 
     // dashboard colors for charts
     this.dashboardColors = {
-      blueStone: '#40daf1',
-      surfieGreen: '#00abff',
+      blueStone: '#00abff',
+      surfieGreen: '#40daf1',
       silverTree: '#1b70ef',
       gossip: '#3c4eb9',
       white: '#ffffff',
