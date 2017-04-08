@@ -68,7 +68,7 @@ export class Layouts {
 //  Observable<FormReport[]>
   addForms(body:Object) {
     let bodyString = JSON.stringify(body); // Stringify payload
-    let headers      = new Headers({ 'Content-Type': 'application/json', "Access-Control-Allow-Origin" : "*"}); // ... Set content type to JSON
+    let headers      = new Headers({ 'Content-Type': 'application/json'}); // ... Set content type to JSON
     let options       = new RequestOptions({ headers: headers }); // Create a request option
 
     console.log("Starting to post a request");
