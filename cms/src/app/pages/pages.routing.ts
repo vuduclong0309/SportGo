@@ -22,7 +22,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'admin',  loadChildren: 'app/pages/admin/admin.module#AdminModule' },
       { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
-      { path: 'editors', loadChildren: 'app/pages/editors/editors.module#EditorsModule' },
+      { path: 'agency', loadChildren: 'app/pages/agency/agency.module#AgencyModule' },
       { path: 'forms', loadChildren: 'app/pages/forms/forms.module#FormsModule' },
       { path: 'maps', loadChildren: 'app/pages/maps/maps.module#MapsModule' }
     ]
