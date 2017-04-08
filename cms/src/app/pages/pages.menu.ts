@@ -94,7 +94,7 @@ export const PAGES_MENU = [
         },
         children: [
           {
-            path: 'googlemaps',
+            path: 'denguemaps',
             data: {
               menu: {
                 title: 'Dengue Map',
@@ -103,7 +103,7 @@ export const PAGES_MENU = [
           },
           
           {
-            path: 'leafletmaps',
+            path: 'hazemaps',
             data: {
               menu: {
                 title: 'Haze (PM 2.5) Maps',

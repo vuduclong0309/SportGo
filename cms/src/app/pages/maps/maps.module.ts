@@ -5,8 +5,8 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { routing }       from './maps.routing';
 import { Maps } from './maps.component';
-import { GoogleMaps } from './components/googleMaps/googleMaps.component';
-import { LeafletMaps } from './components/leafletMaps/leafletMaps.component';
+import { DengueMaps } from './components/DengueMaps/DengueMaps.component';
+import { HazeMaps } from './components/HazeMaps/HazeMaps.component';
 
 
 @NgModule({
@@ -18,8 +18,8 @@ import { LeafletMaps } from './components/leafletMaps/leafletMaps.component';
   ],
   declarations: [
     Maps,
-    GoogleMaps,
-    LeafletMaps
+    DengueMaps,
+    HazeMaps
   ],
   providers: [
   ]
