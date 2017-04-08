@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'CMS_System',
     'rest_framework',
 ]
-
+CSRF_COOKIE_SECURE = False
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+SENDSMS_BACKEND = 'sendsms.backends.console.SmsBackend'
 CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'DjangoSetting.urls'
 

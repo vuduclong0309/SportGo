@@ -6,6 +6,9 @@ from rest_framework.views import APIView
 from .models import Weather,ReportData, CrisisState
 from .Serializers import WeatherSerializer,ReportDataSerializer, CrisisStateSerializer
 from rest_framework.settings import api_settings
+from sendsms import api
+from django.views.decorators.csrf import csrf_exempt
+from sendsms.message import SmsMessage
 # Create your views here.
 
 class WeatherViewSet(viewsets.ModelViewSet):
@@ -92,8 +95,15 @@ class ReportDataViewSet(viewsets.ModelViewSet):
 def index(request):
     return HttpResponse("Hello World!!!")
 
+@csrf_exempt
+def sendSMS(request,number):
+    message = None
+    print(number)
+    if(request.method == "POST"):
+        # message = SmsMessage(body=request.body,from_phone="+6584016409",to=("+65"+number))
+        # print(message)
+        # message.send()
+        api.send_sms(body='I can haz txt', from_phone='+6597742291', to=['+6584016409'])
+    return HttpResponse("Message sent!")
 
-
-def getWeatherData(request, data):
-    return HttpResponse("This is a passed in data: %s" % data)
 
