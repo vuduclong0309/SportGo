@@ -9,6 +9,7 @@ from rest_framework.settings import api_settings
 from sendsms import api
 from django.views.decorators.csrf import csrf_exempt
 from sendsms.message import SmsMessage
+from twilio.rest import Client
 # Create your views here.
 
 class WeatherViewSet(viewsets.ModelViewSet):
@@ -98,12 +99,15 @@ def index(request):
 @csrf_exempt
 def sendSMS(request,number):
     message = None
-    print(number)
     if(request.method == "POST"):
-        # message = SmsMessage(body=request.body,from_phone="+6584016409",to=("+65"+number))
-        # print(message)
-        # message.send()
-        api.send_sms(body='I can haz txt', from_phone='+6597742291', to=['+6584016409'])
-    return HttpResponse("Message sent!")
+        account = "ACa64c99246f5b583d0bc928b2c5c60c50"
+        token = "9a84195984dcec9432c6c0dc87177e11"
+        client = Client(account, token)
+        client.messages.create(
+            to='+65'+number,
+            from_='+13345398798 ',
+            body=request.body,
+        )
+    return HttpResponse('Message Sent Successful!')
 
 
