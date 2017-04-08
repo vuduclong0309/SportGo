@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^$',views.index,name='index'),
     url(r'^',include(router.urls)),
     #url(r'^weather',views.WeatherAPI.as_view()),
+    # url(r'^data',views.getWeatherData()),
 ]
 
 #urlpatterns = format_suffix_patterns(urlpatterns)

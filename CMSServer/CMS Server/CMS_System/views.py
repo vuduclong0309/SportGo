@@ -19,12 +19,16 @@ class CrisisStateViewSet(viewsets.ModelViewSet):
     queryset = CrisisState.objects.all()
     serializer_class = CrisisStateSerializer
 
+    def list(self, request, *args, **kwargs):
+        queryset = CrisisState.objects.order_by('-id')[0]
+        serializer = CrisisStateSerializer(queryset)
+        return Response(serializer.data)
+
 class ReportDataViewSet(viewsets.ModelViewSet):
     queryset = ReportData.objects.all()
     serializer_class = ReportDataSerializer
 
     def list(self, request, *args, **kwargs):
-        print("hello")
         queryset = ReportData.objects.all()
         serializer = ReportDataSerializer(queryset,many=True)
         return Response(serializer.data)#,headers={"Access-Control-Allow-Origin":"*"})

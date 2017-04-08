@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['192.168.0.57','172.20.114.92','127.0.0.1','10.27.127.105', '19
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'CMS_System',
     'rest_framework',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
