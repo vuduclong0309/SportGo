@@ -1,10 +1,10 @@
 import { Routes, RouterModule }  from '@angular/router';
 
 import { Maps } from './maps.component';
-import { BubbleMaps } from './components/bubbleMaps/bubbleMaps.component';
-import { GoogleMaps } from './components/googleMaps/googleMaps.component';
-import { LeafletMaps } from './components/leafletMaps/leafletMaps.component';
-import { LineMaps } from './components/lineMaps/lineMaps.component';
+
+import { DengueMaps } from './components/DengueMaps/DengueMaps.component';
+import { HazeMaps } from './components/HazeMaps/HazeMaps.component';
+
 
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
@@ -12,10 +12,8 @@ const routes: Routes = [
     path: '',
     component: Maps,
     children: [
-      { path: 'bubblemaps', component: BubbleMaps },
-      { path: 'googlemaps', component: GoogleMaps },
-      { path: 'leafletmaps', component: LeafletMaps },
-      { path: 'linemaps', component: LineMaps }
+      { path: 'denguemaps', component: DengueMaps },
+      { path: 'hazemaps', component: HazeMaps }
     ]
   }
 ];

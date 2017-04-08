@@ -5,12 +5,8 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { routing }       from './maps.routing';
 import { Maps } from './maps.component';
-import { BubbleMaps } from './components/bubbleMaps/bubbleMaps.component';
-import { GoogleMaps } from './components/googleMaps/googleMaps.component';
-import { LeafletMaps } from './components/leafletMaps/leafletMaps.component';
-import { LineMaps } from './components/lineMaps/lineMaps.component';
-import { BubbleMapsService } from './components/bubbleMaps/bubbleMaps.service';
-import { LineMapsService } from './components/lineMaps/lineMaps.service';
+import { DengueMaps } from './components/DengueMaps/DengueMaps.component';
+import { HazeMaps } from './components/HazeMaps/HazeMaps.component';
 
 
 @NgModule({
@@ -22,14 +18,10 @@ import { LineMapsService } from './components/lineMaps/lineMaps.service';
   ],
   declarations: [
     Maps,
-    BubbleMaps,
-    GoogleMaps,
-    LeafletMaps,
-    LineMaps
+    DengueMaps,
+    HazeMaps
   ],
   providers: [
-    BubbleMapsService,
-    LineMapsService
   ]
 })
 export class MapsModule {}

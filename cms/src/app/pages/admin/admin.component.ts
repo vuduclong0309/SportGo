@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {AdminService} from './admin.service';
-
+import {Report} from './report'
 @Component({
   selector: 'admin',
   templateUrl: './admin.html'
 })
 export class AdminComponent {
-  public reportList:Array<Object>;
+  public reportList:Array<Report>;
 
   constructor(private _adminService:AdminService) {
   }
@@ -19,7 +19,7 @@ export class AdminComponent {
     this.reportList = this._adminService.getReportList();
   }
 
-  private deleteCrisis(values:Object){
-  		console.log("deleted");
+  private deleteCrisis(values:Report){
+  		this._adminService.deleteCrisis(values);
   };
 }

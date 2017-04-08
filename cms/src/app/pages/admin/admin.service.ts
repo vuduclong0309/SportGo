@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Report} from './report';
 
 @Injectable()
 export class AdminService {
@@ -34,5 +35,12 @@ export class AdminService {
 
   getReportList(){
     return this.reportList;
+  }
+
+  deleteCrisis(values:Report){
+      let index: number = this.reportList.indexOf(values.id);
+      if(index !== -1){
+        this.reportList.splice(index,1);
+      }
   }
 }
