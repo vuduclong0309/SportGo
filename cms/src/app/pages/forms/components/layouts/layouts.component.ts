@@ -23,6 +23,7 @@ export class Layouts {
   public location:AbstractControl;
   public itype:AbstractControl;
   public description:AbstractControl;
+  public assistanceType: AbstractControl;
   public positionObs: Observable<Position>;
   public position: Position;
   public latitude: any;
@@ -32,10 +33,11 @@ export class Layouts {
     this.reportForm = fb.group({
       'firstName': ['', Validators.compose([Validators.required])],
       'lastName': ['', Validators.compose([Validators.required])],
-      'tel': [''],
+      'tel': ['', Validators.compose([Validators.required])],
       'location': ['', Validators.compose([Validators.required])],
-      'description': ['', Validators.compose([Validators.required])],
+      'description': ['none', Validators.compose([Validators.required])],
       'itype' : ['', Validators.compose([Validators.required])],
+      'assistanceType' : ['none'],
     });
     this.firstName = this.reportForm.controls['firstName'];
     this.lastName = this.reportForm.controls['lastName'];
@@ -43,7 +45,7 @@ export class Layouts {
     this.location = this.reportForm.controls['location'];
     this.itype = this.reportForm.controls['itype'];
     this.description = this.reportForm.controls['description'];
-
+    this.assistanceType = this.reportForm.controls['assistanceType'];
     //this.positionObs = this.gService.getCurrentPosition();
     //this.position = this.getValueFromObservable();
     //console.log(this.positionObs);
@@ -99,6 +101,7 @@ export class Layouts {
       "location" : values['location'],
       "description" : values['description'],
       "crisisType" : values['itype'],
+      //"assistanceType" :values['assistanceType'],
       "latitude" : this.latitude,
       "longitude" : this.longitude,
 
