@@ -9,7 +9,7 @@ import {Observable} from 'rxjs/Rx';
   templateUrl: './inputs.html',
 })
 export class Inputs {
-
+  /*
   private HAZEREPORT: FormReport[] = [
       {id : "Report-No1", firstName : "Phan Anh" , lastName : "Tuan" , telephone : "+(65) 97742291", location : "NTU Hall 14",
        description : "A Strong Haze Status nearby. Feel very bad when stepping out from your room. Everyone around should take care yourself",
@@ -32,7 +32,7 @@ export class Inputs {
     {id : "Report-No10", firstName : "Tran Truong" , lastName : "Giang" , telephone : "94244091", location : "NTU Hall 10",
        description : "Should stay in hall",
        crisisType : "Dengue" , crisisState : "After Crisis"}
-  ];
+  ];*/
 
   private hazeReport:any
   private dengueReport:any
@@ -43,7 +43,7 @@ export class Inputs {
   private formsUrl1 = "http://10.27.127.105:8000/CMS_System/reportList/Haze/";
   private formsUrl2 = "http://10.27.127.105:8000/CMS_System/reportList/Dengue/";
   private formsUrl = "http://10.27.127.105:8000/CMS_System/reportList/"
-  private formReport = this.getForms();
+  private Reports = this.getForms();
 
 
 
