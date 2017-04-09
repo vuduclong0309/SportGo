@@ -4,13 +4,14 @@ import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/form
 import {Observable} from 'rxjs/Rx';
 
 import {FormReport}  from './formsreport';
+import {BASEURL} from '../../baseURL';
 
 @Injectable()
 export class FeedService {
 
   constructor(private http:Http){}
 
-  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/";
+  private formsUrl = BASEURL + "reportList/";
 
 
   private _data = [

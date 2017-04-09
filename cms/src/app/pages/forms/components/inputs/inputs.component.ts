@@ -5,6 +5,7 @@ import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/form
 import {Observable} from 'rxjs/Rx';
 import { CeiboShare } from 'ng2-social-share';
 import { DOCUMENT } from '@angular/platform-browser';
+import { BASEURL } from '../../../baseURL';
 
 @Component({
   selector: 'inputs',
@@ -56,7 +57,7 @@ export class Inputs {
 
   private formsUrl1 = "http://10.27.127.105:8000/CMS_System/reportList/Haze/";
   private formsUrl2 = "http://10.27.127.105:8000/CMS_System/reportList/Dengue/";
-  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/verified=True/"
+  private formsUrl = BASEURL + "reportList/verified=True/"
   private Reports = this.getForms();
 
 

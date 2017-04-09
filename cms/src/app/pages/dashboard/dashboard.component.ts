@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
+import {BASEURL} from '../baseURL';
 
 @Component({
   selector: 'dashboard',
@@ -9,7 +10,7 @@ import {Observable} from 'rxjs/Rx';
   templateUrl: './dashboard.html'
 })
 export class Dashboard {
-  private crisisUrl = "http://10.27.192.198:8000/CMS_System/getCrisisState/";
+  private crisisUrl = BASEURL + "getCrisisState/";
   public crisisState:any;
   
     constructor(private http:Http) {

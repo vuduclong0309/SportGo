@@ -4,6 +4,7 @@ import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/form
 import {Observable} from 'rxjs/Rx';
 import {GeolocationService} from './GeolocationService'
 import {FormReport}  from './formsreport';
+import {BASEURL} from '../../../baseURL';
 
 @Component({
   selector: 'layouts',
@@ -11,7 +12,7 @@ import {FormReport}  from './formsreport';
 })
 export class Layouts {
 
-  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/";
+  private formsUrl = BASEURL + "reportList/";
   public postResponse: any;
   private formToSend = {};
   public error: any;

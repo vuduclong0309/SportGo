@@ -4,6 +4,8 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
 
+import {BASEURL} from '../baseURL';
+
 import {FormReport}  from './formsreport';
 @Component({
   selector: 'admin',
@@ -11,8 +13,8 @@ import {FormReport}  from './formsreport';
 })
 export class AdminComponent {
   public reportList:any;
-  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/";
-  private crisisUrl = "http://10.27.192.198:8000/CMS_System/getCrisisState/"
+  private formsUrl = BASEURL + "reportList/";
+  private crisisUrl = BASEURL + "getCrisisState/"
   private feedback: string;
   private submitted = false;
   private crisisState = "Unchanged";
