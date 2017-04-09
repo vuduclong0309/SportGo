@@ -24,7 +24,7 @@ class ReportData(models.Model):
     lastName = models.TextField(max_length=100)
     telephone = models.IntegerField()
     location = models.TextField(max_length=100)
-    description = models.TextField(max_length=1000)
+    description = models.TextField(max_length=1000,null=True)
     crisisType = models.TextField(max_length=10)
     assistanceType = models.TextField(max_length=100, null=True)
     verified = models.BooleanField(default=False)
