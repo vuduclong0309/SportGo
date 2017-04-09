@@ -57,31 +57,32 @@
         </div>
         <fieldset class="form-group row">
             <legend>Type of assistance requested</legend>
-            <div class="form-check">
+            <br>
+            <div class="form-check col-sm-2">
               <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="none" [formControl]="assistanceType" checked>
                 none
               </label>
             </div>
-            <div class="form-check">
+            <div class="form-check col-sm-2">
             <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="firefighter" [formControl]="assistanceType">
                 Fire Fighter
               </label>
             </div>
-            <div class="form-check">
+            <div class="form-check col-sm-2">
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="gasleak" [formControl]="assistanceType">
                     Gas Leak Control
                   </label>
             </div>
-            <div class="form-check">
+            <div class="form-check col-sm-2">
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="evacuation" [formControl]="assistanceType">
                     Evacuation
                   </label>
             </div>
-            <div class="form-check">
+            <div class="form-check col-sm-2">
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="ambulance" [formControl]="assistanceType">
                     Ambulance
@@ -100,11 +101,12 @@
                     </div>
                 </div>
 
-        <div class="col-sm-12">
+        <div class="col-sm-12" style="padding-bottom:100px;">
                         <button type="submit" class="btn btn-primary" ng-disabled="!$invalid">Send
                             report
                         </button>
                     </div>
 
     </form>
+</div>
 <div class = "row" [hidden] = "!submitted">Your report has been recorded</div>

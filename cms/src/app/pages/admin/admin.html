@@ -17,10 +17,10 @@
   <h3> Full Report List </h3> <br>
   <div *ngFor="let message of reportList | async">
     <div class="row">
-        <span class = "col-sm-4"> Location: {{ message.location }} </span>
-        <span class = "col-sm-2"> Type: {{ message.crisisType}} </span>
-        <span class = "col-sm-2"> By:{{ message.firstName}} {{message.lastName}} </span>
-        <span class = "col-sm-2"> Verified:{{ message.verified}}</span>
+        <span class = "col-sm-4"> Location: {{message.location}} </span>
+        <span class = "col-sm-2"> Type: {{message.crisisType}} </span>
+        <span class = "col-sm-2"> By: {{message.firstName}} {{message.lastName}} </span>
+        <span class = "col-sm-2"> Verified: {{message.verified}}</span>
         <div class = "col-sm-1">
           <input type="button" class = "btn btn-warning" name="Verify" value="Verify" (click)="verifyReport(message)">
         </div>
@@ -28,6 +28,7 @@
           <input type="button" class = "btn btn-danger" name="Delete" value="Delete" (click)="deleteReport(message)">
         </div>
       </div>
+      <br>
   </div>
 </div>
 
