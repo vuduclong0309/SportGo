@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'CMS_System',
     'rest_framework',
 ]
+SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
