@@ -25,6 +25,8 @@ export class Layouts {
   public description:AbstractControl;
   public positionObs: Observable<Position>;
   public position: Position;
+  public latitude: any;
+  public longitude: any;
   constructor(fb:FormBuilder , private http:Http, public gService: GeolocationService) {
 
     this.reportForm = fb.group({
@@ -42,10 +44,12 @@ export class Layouts {
     this.itype = this.reportForm.controls['itype'];
     this.description = this.reportForm.controls['description'];
 
-    this.positionObs = this.gService.getCurrentPosition();
-    this.position = this.getValueFromObservable();
-    console.log(this.positionObs);
-    console.log(this.position);
+    //this.positionObs = this.gService.getCurrentPosition();
+    //this.position = this.getValueFromObservable();
+    //console.log(this.positionObs);
+    //console.log(this.position);
+
+    navigator.geolocation.getCurrentPosition(this.successCallback,this.errorCallback,this.options);
   }
   getValueFromObservable():Position {
     let output;
@@ -56,6 +60,35 @@ export class Layouts {
     ).unsubscribe();
     return output;
   }
+
+  successCallback = (position)=> {
+            this.latitude = position.coords.latitude;
+            this.longitude = position.coords.longitude;
+            console.log(this.latitude);
+            console.log(this.longitude);
+    }
+
+    errorCallback = (error) => {
+            let errorMessage = 'Unknown error';
+            switch(error.code) {
+              case 1:
+                errorMessage = 'Permission denied';
+                break;
+              case 2:
+                errorMessage = 'Position unavailable';
+                break;
+              case 3:
+                errorMessage = 'Timeout';
+                break;
+            }
+            console.log(errorMessage);
+          };
+
+      options = {
+            enableHighAccuracy: true,
+            timeout: 1000,
+            maximumAge: 0
+          };
   public SubmitForm(values:Object):void {
     
     this.submitted = true;
@@ -66,8 +99,9 @@ export class Layouts {
       "location" : values['location'],
       "description" : values['description'],
       "crisisType" : values['itype'],
-      "crisisState" : "before"
-      
+      "latitude" : this.latitude,
+      "longitude" : this.longitude,
+
     }
 
     this.addForms(this.formToSend);
