@@ -25,9 +25,14 @@ class CrisisStateViewSet(viewsets.ModelViewSet):
     serializer_class = CrisisStateSerializer
 
     def list(self, request, *args, **kwargs):
-        queryset = CrisisState.objects.order_by('-id')[0]
-        serializer = CrisisStateSerializer(queryset)
-        return Response(serializer.data)
+        try:
+            queryset = CrisisState.objects.order_by('-id')[0]
+            serializer = CrisisStateSerializer(queryset)
+            return Response(serializer.data)
+        except Exception as e:
+            queryset = CrisisState.objects.all()
+            serializer = CrisisStateSerializer(queryset,many=True)
+            return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         print("Request Headers: ")
@@ -53,9 +58,19 @@ class ReportDataViewSet(viewsets.ModelViewSet):
             parameter = int(self.kwargs['pk'])
             return super(ReportDataViewSet, self).retrieve(request, *args, **kwargs)
         except Exception as e:
-            queryset = ReportData.objects.filter(crisisType=self.kwargs['pk'])
-            serializer = ReportDataSerializer(queryset,many=True)
-            return Response(serializer.data)#,headers={"Access-Control-Allow-Origin":"*"})
+            print(self.kwargs['pk'])
+            parameter = self.kwargs['pk'].split('=')
+            retrieveType = parameter[0]
+            retrieveData = parameter[1]
+            if (retrieveType == 'crisisType'):
+                queryset = ReportData.objects.filter(crisisType=retrieveData)
+                serializer = ReportDataSerializer(queryset, many=True)
+                return Response(serializer.data)  # ,headers={"Access-Control-Allow-Origin":"*"})
+            elif (retrieveType == 'verified'):
+                queryset = ReportData.objects.filter(verified=retrieveData)
+                serializer = ReportDataSerializer(queryset, many=True)
+                return Response(serializer.data)  # ,headers={"Access-Control-Allow-Origin":"*"})
+
 
     def create(self, request, *args, **kwargs):
         print("Request Headers: ")
@@ -92,7 +107,7 @@ class ReportDataViewSet(viewsets.ModelViewSet):
         print(request.data)
         response = super(ReportDataViewSet,self).update(request)
         if(response):
-            if(request.data.has_key('verified') and request.data['verified']):
+            if(request.data.has_key('verified') and request.data['verified']) and request.data.has_key('assistanceType') and request.data['assistanceType'] != None:
                 sendSMS(request,"SCDF")
         return response
     # def update(self, request, *args, **kwargs):
