@@ -5,6 +5,7 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { routing }       from './maps.routing';
 import { Maps } from './maps.component';
+import { MapsService} from './maps.service';
 import { DengueMaps } from './components/DengueMaps/DengueMaps.component';
 import { HazeMaps } from './components/HazeMaps/HazeMaps.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
@@ -25,6 +26,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     HazeMaps
   ],
   providers: [
+    MapsService
   ]
 })
 export class MapsModule {}

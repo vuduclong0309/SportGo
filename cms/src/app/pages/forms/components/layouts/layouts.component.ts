@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
-
+import {GeolocationService} from './GeolocationService'
 import {FormReport}  from './formsreport';
 
 @Component({
@@ -23,8 +23,9 @@ export class Layouts {
   public location:AbstractControl;
   public itype:AbstractControl;
   public description:AbstractControl;
-
-  constructor(fb:FormBuilder , private http:Http) {
+  public positionObs: Observable<Position>;
+  public position: Position;
+  constructor(fb:FormBuilder , private http:Http, public gService: GeolocationService) {
 
     this.reportForm = fb.group({
       'firstName': ['', Validators.compose([Validators.required])],
@@ -39,11 +40,24 @@ export class Layouts {
     this.tel = this.reportForm.controls['tel'];
     this.location = this.reportForm.controls['location'];
     this.itype = this.reportForm.controls['itype'];
-    this.description = this.reportForm.controls['description']
+    this.description = this.reportForm.controls['description'];
+
+    this.positionObs = this.gService.getCurrentPosition();
+    this.position = this.getValueFromObservable();
+    console.log(this.positionObs);
+    console.log(this.position);
   }
-
+  getValueFromObservable():Position {
+    let output;
+    this.positionObs.subscribe(
+        (data:any) => {
+            output = data
+        }
+    ).unsubscribe();
+    return output;
+  }
   public SubmitForm(values:Object):void {
-
+    
     this.submitted = true;
     this.formToSend = {
       "firstName" : values['firstName'],
@@ -53,6 +67,7 @@ export class Layouts {
       "description" : values['description'],
       "crisisType" : values['itype'],
       "crisisState" : "before"
+      
     }
 
     this.addForms(this.formToSend);

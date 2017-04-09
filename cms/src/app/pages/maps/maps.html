@@ -3,7 +3,8 @@
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
 
+
+
 <sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-  <sebm-google-map-marker [latitude]="lat2" [longitude]="lng"></sebm-google-map-marker>
+  		<sebm-google-map-marker *ngFor="let location of reportList|async" [latitude]="convertStringToNumber(location.latitude)" [longitude]="convertStringToNumber(location.longitude)" [label] = "location.crisisType"></sebm-google-map-marker>
 </sebm-google-map>

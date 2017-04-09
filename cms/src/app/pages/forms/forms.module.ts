@@ -16,7 +16,7 @@ import { GroupInputs } from './components/inputs/components/groupInputs';
 import { CheckboxInputs } from './components/inputs/components/checkboxInputs';
 import { Rating } from './components/inputs/components/ratinginputs';
 import { SelectInputs } from './components/inputs/components/selectInputs';
-
+import {GeolocationService} from './components/layouts/GeolocationService';
 import { InlineForm } from './components/layouts/components/inlineForm';
 import { BlockForm } from './components/layouts/components/blockForm';
 import { HorizontalForm } from './components/layouts/components/horizontalForm';
@@ -46,6 +46,9 @@ import { WithoutLabelsForm } from './components/layouts/components/withoutLabels
     HorizontalForm,
     BasicForm,
     WithoutLabelsForm
+  ],
+  providers: [
+    GeolocationService
   ]
 })
 export class FormsModule {
