@@ -1,18 +1,18 @@
 <div class="feed-messages-container">
-  <div class="feed-message" *ngFor="let message of reportList">
-    
+  <div class="feed-message" *ngFor="let report of reportList | async">
+
     <div class="text-block text-message">
       <div class="message-header">
-        <span class="author">{{ message.firstName }} {{ message.lastName}}</span>
+        <span class="author">{{ report.firstName }} {{ report.lastName}}</span>
       </div>
       <div class="message-content">
-        <span>From: {{ message.location }} </span>
+        <span>From: {{ report.location }} </span>
       </div>
       <div class="message-content">
-        <span>Crisis Type: {{ message.crisisType }} </span>
+        <span>Crisis Type: {{ report.crisisType }} </span>
       </div>
       <div class="message-content">
-        <span>Author Comment: {{ message.description}} </span>
+        <span>Author Comment: {{ report.description}} </span>
       </div>
     </div>
   </div>

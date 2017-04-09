@@ -1,7 +1,17 @@
 import {Injectable} from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http'
+import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {Observable} from 'rxjs/Rx';
+
+import {FormReport}  from './formsreport';
 
 @Injectable()
 export class FeedService {
+
+  constructor(private http:Http){}
+
+  private formsUrl = "http://172.20.114.92:8000/CMS_System/reportList/";
+
 
   private _data = [
     {
@@ -115,40 +125,19 @@ export class FeedService {
     }
   ];
 
-  public reportList = [
-    {
-        "id": 1,
-        "firstName": "Michael",
-        "lastName": "Le",
-        "telephone": 12345678,
-        "location": "NTU",
-        "description": "reporting haze",
-        "crisisType": "Haze"
-    },
-    {
-        "id": 2,
-        "firstName": "Kelvin",
-        "lastName": "Chong",
-        "telephone": 98765432,
-        "location": "East Coast Park",
-        "description": "reporting dengue",
-        "crisisType": "Dengue"
-    },
-    {
-        "id": 5,
-        "firstName": "Tuan",
-        "lastName": "Phan",
-        "telephone": 98762345,
-        "location": "NTU",
-        "description": "very haze",
-        "crisisType": "Haze"
-    }]
+  public reportList:any;
 
   getData() {
     return this._data;
   }
 
   getReportList(){
-    return this.reportList;
+    return this.getForms();
+  }
+
+  getForms(): Observable<FormReport[]> {
+    return this.http.get(this.formsUrl)
+                    .map((res:Response) => res.json() as FormReport)
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

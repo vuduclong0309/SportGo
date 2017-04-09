@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {FormReport} from '../layouts/formsreport';
+import { Http, Response, Headers, RequestOptions } from '@angular/http'
+import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'inputs',
@@ -7,7 +10,6 @@ import {FormReport} from '../layouts/formsreport';
 })
 export class Inputs {
 
-  private formReport:any;
   private HAZEREPORT: FormReport[] = [
       {id : "Report-No1", firstName : "Phan Anh" , lastName : "Tuan" , telephone : "+(65) 97742291", location : "NTU Hall 14",
        description : "A Strong Haze Status nearby. Feel very bad when stepping out from your room. Everyone around should take care yourself",
@@ -32,6 +34,23 @@ export class Inputs {
        crisisType : "Dengue" , crisisState : "After Crisis"}
   ];
 
-  constructor() {
+  private hazeReport:any
+  private dengueReport:any
+  private report:Object
+
+  constructor(private http:Http){}
+
+  private formsUrl1 = "http://10.27.127.105:8000/CMS_System/reportList/Haze/";
+  private formsUrl2 = "http://10.27.127.105:8000/CMS_System/reportList/Dengue/";
+  private formsUrl = "http://10.27.127.105:8000/CMS_System/reportList/"
+  private formReport = this.getForms();
+
+
+
+  getForms(): Observable<FormReport[]> {
+    return this.http.get(this.formsUrl)
+                    .map((res:Response) => res.json() as FormReport)
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+
 }

@@ -11,7 +11,7 @@ import 'style-loader!./feed.scss';
 export class Feed {
 
   public feed:Array<Object>;
-  public reportList:Array<Object>;
+  public reportList:any;
   constructor(private _feedService:FeedService) {
   }
 

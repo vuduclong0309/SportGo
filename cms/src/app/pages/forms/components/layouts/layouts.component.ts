@@ -11,7 +11,7 @@ import {FormReport}  from './formsreport';
 })
 export class Layouts {
 
-  private formsUrl = "http://10.27.127.105:8000/CMS_System/reportList/";
+  private formsUrl = "http://172.20.114.92:8000/CMS_System/reportList/";
   public postResponse: any;
   private formToSend = {};
   public error: any;
@@ -113,6 +113,7 @@ export class Layouts {
     return this.http.get(this.formsUrl)
                     .map((res:Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
   }
 //  Observable<FormReport[]>
   addForms(body:Object) {
