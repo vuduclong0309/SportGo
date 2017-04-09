@@ -13,7 +13,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 
 //@Inject(DOCUMENT)
 export class Inputs {
-  /*
+
   private HAZEREPORT: FormReport[] = [
       {id : "Report-No1", firstName : "Phan Anh" , lastName : "Tuan" , telephone : "+(65) 97742291", location : "NTU Hall 14",
        description : "A Strong Haze Status nearby. Feel very bad when stepping out from your room. Everyone around should take care yourself",
@@ -36,7 +36,7 @@ export class Inputs {
     {id : "Report-No10", firstName : "Tran Truong" , lastName : "Giang" , telephone : "94244091", location : "NTU Hall 10",
        description : "Should stay in hall",
        crisisType : "Dengue" , crisisState : "After Crisis"}
-  ];*/
+  ];
 
   private hazeReport:any
   private dengueReport:any
@@ -44,7 +44,8 @@ export class Inputs {
 
   // variable to share
   public repoUrl = 'https://github.com/Epotignano/ng2-social-share';
-  public imageUrl = 'https://avatars2.githubusercontent.com/u/10674541?v=3&s=200';
+  //public repo2 = 'http://10.27.249.249:8080/#/pages/forms/layouts';
+  //public imageUrl = 'https://avatars2.githubusercontent.com/u/10674541?v=3&s=200';
   //public repoUrl:any;
   //public imageUrl:any;
 

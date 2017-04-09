@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-6">
-      <li *ngFor="let formReport of Reports|async" style="list-style:none" >
+      <li *ngFor="let formReport of HAZEREPORT" style="list-style:none" >
         <ba-card title="Haze Report" baCardClass="with-scroll">
             <article style="font-size:2">
               <p>ID : {{formReport.id}}</p>
@@ -16,7 +16,7 @@
             <br>
             <div class="al-share-auth">
               <ul class="al-share clearfix">
-                <li><i class="socicon socicon-facebook" title="Share on Facebook" ceiboShare  [facebook]="{u: repoUrl}"></i></li>
+                <li><i class="socicon socicon-facebook" title="Share on Facebook" ceiboShare  [facebook]="{u: repo2}"></i></li>
                 <li><i class="socicon socicon-twitter" title="Share on Twitter"
                   ceiboShare  [twitter]="{url:repoUrl, text:'Checkout this what people find about haze, dengue in Singapore', hashtags:'CMS, Dengue, Haze'}"></i></li>
               </ul>
