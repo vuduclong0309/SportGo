@@ -5,16 +5,20 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { routing }       from './maps.routing';
 import { Maps } from './maps.component';
+import { MapsService} from './maps.service';
 import { DengueMaps } from './components/DengueMaps/DengueMaps.component';
 import { HazeMaps } from './components/HazeMaps/HazeMaps.component';
-
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgaModule,
-    routing
+    routing,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCp2XAJXj7C3KQce9AgHlYnAzFoUTAl5_I'
+    })
   ],
   declarations: [
     Maps,
@@ -22,6 +26,7 @@ import { HazeMaps } from './components/HazeMaps/HazeMaps.component';
     HazeMaps
   ],
   providers: [
+    MapsService
   ]
 })
 export class MapsModule {}

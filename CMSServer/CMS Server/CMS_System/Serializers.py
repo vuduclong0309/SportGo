@@ -8,9 +8,9 @@ class WeatherSerializer(serializers.ModelSerializer):
 class ReportDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReportData
-        fields = ('id','firstName','lastName','telephone','location','description','crisisType')
+        fields = ('id','firstName','lastName','telephone','location','description','crisisType','assistanceType','verified','longitude','latitude',)
 
 class CrisisStateSerializer(serializers.ModelSerializer):
     class Meta:
         model = CrisisState
-        fields = ('crisisState',)
+        fields = ('id','crisisState',)

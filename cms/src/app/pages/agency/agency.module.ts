@@ -1,12 +1,10 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CKEditorModule } from 'ng2-ckeditor';
 import { NgaModule } from '../../theme/nga.module';
 
-import { routing }       from './editors.routing';
-import { Editors } from './editors.component';
-import { Ckeditor } from './components/ckeditor/ckeditor.component';
+import {Agency} from './agency.component'
+import { routing }       from './agency.routing';
 
 
 @NgModule({
@@ -14,13 +12,11 @@ import { Ckeditor } from './components/ckeditor/ckeditor.component';
     CommonModule,
     FormsModule,
     NgaModule,
-    CKEditorModule,
     routing
   ],
   declarations: [
-    Editors,
-    Ckeditor
+    Agency,
   ]
 })
-export class EditorsModule {
+export class AgencyModule {
 }

@@ -6,6 +6,10 @@ from rest_framework.views import APIView
 from .models import Weather,ReportData, CrisisState
 from .Serializers import WeatherSerializer,ReportDataSerializer, CrisisStateSerializer
 from rest_framework.settings import api_settings
+from sendsms import api
+from django.views.decorators.csrf import csrf_exempt
+from sendsms.message import SmsMessage
+from twilio.rest import Client
 # Create your views here.
 
 class WeatherViewSet(viewsets.ModelViewSet):
@@ -19,12 +23,16 @@ class CrisisStateViewSet(viewsets.ModelViewSet):
     queryset = CrisisState.objects.all()
     serializer_class = CrisisStateSerializer
 
+    def list(self, request, *args, **kwargs):
+        queryset = CrisisState.objects.order_by('-id')[0]
+        serializer = CrisisStateSerializer(queryset)
+        return Response(serializer.data)
+
 class ReportDataViewSet(viewsets.ModelViewSet):
     queryset = ReportData.objects.all()
     serializer_class = ReportDataSerializer
 
     def list(self, request, *args, **kwargs):
-        print("hello")
         queryset = ReportData.objects.all()
         serializer = ReportDataSerializer(queryset,many=True)
         return Response(serializer.data)#,headers={"Access-Control-Allow-Origin":"*"})
@@ -88,8 +96,18 @@ class ReportDataViewSet(viewsets.ModelViewSet):
 def index(request):
     return HttpResponse("Hello World!!!")
 
+@csrf_exempt
+def sendSMS(request,number):
+    message = None
+    if(request.method == "POST"):
+        account = "ACa64c99246f5b583d0bc928b2c5c60c50"
+        token = "9a84195984dcec9432c6c0dc87177e11"
+        client = Client(account, token)
+        client.messages.create(
+            to='+65'+number,
+            from_='+13345398798 ',
+            body=request.body,
+        )
+    return HttpResponse('Message Sent Successful!')
 
-
-def getWeatherData(request, data):
-    return HttpResponse("This is a passed in data: %s" % data)
 
