@@ -17,6 +17,11 @@ reportData_detail = ReportDataViewSet.as_view({
     'delete': 'destroy'
 })
 
+crisisState_list = CrisisStateViewSet.as_view({
+    'get':'list',
+    'post':'create'
+})
+
 router = routers.DefaultRouter()
 router.register(r'weather',WeatherViewSet)
 router.register(r'reportList', ReportDataViewSet)

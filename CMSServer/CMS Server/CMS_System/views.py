@@ -29,6 +29,13 @@ class CrisisStateViewSet(viewsets.ModelViewSet):
         serializer = CrisisStateSerializer(queryset)
         return Response(serializer.data)
 
+    def create(self, request, *args, **kwargs):
+        print("Request Headers: ")
+        printRequestHeader(request)
+        print("Request Data: ")
+        print(request.data)
+        return super(CrisisStateViewSet,self).create(request)
+
 class ReportDataViewSet(viewsets.ModelViewSet):
     queryset = ReportData.objects.all()
     serializer_class = ReportDataSerializer
