@@ -77,6 +77,17 @@ class ReportDataViewSet(viewsets.ModelViewSet):
 
     def perform_destroy(self, instance):
         instance.delete()
+
+    def update(self, request, *args, **kwargs):
+        print("Request Headers: ")
+        printRequestHeader(request)
+        print("Request Data: ")
+        print(request.data)
+        response = super(ReportDataViewSet,self).update(request)
+        if(response):
+            if(request.data.has_key('verified') and request.data['verified']):
+                sendSMS(request,"SCDF")
+        return response
     # def update(self, request, *args, **kwargs):
     #     instance = self.get_object()
     #     print(instance)
@@ -101,20 +112,25 @@ class ReportDataViewSet(viewsets.ModelViewSet):
 #         return Response(serializer.data)
 
 def index(request):
-    return HttpResponse("Hello World!!!")
+    return HttpResponse("This is CMS Backend Service!!!")
 
 @csrf_exempt
 def sendSMS(request,number):
+    print("Preparing Message To Send!!!")
     message = None
-    if(request.method == "POST"):
+    if(request.method == "POST" or request.method == "PUT"):
         account = "ACa64c99246f5b583d0bc928b2c5c60c50"
         token = "9a84195984dcec9432c6c0dc87177e11"
         client = Client(account, token)
+        numberToSend = '+6584016409'
+        if(number == "SCDF"):
+            numberToSend = '+6584016409'
         client.messages.create(
-            to='+65'+number,
-            from_='+13345398798 ',
-            body=request.body,
+            to=numberToSend,
+            from_='+13345398798',
+            body=request.data['assistanceType'].upper()+ " at " + request.data['location'].upper() + " Need Assistance!!!",
         )
+    print("Message Sent Successful!")
     return HttpResponse('Message Sent Successful!')
 
 def printRequestHeader(request):
