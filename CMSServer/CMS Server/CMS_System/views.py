@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import re
 from django.http import HttpResponse
 from rest_framework import viewsets,status
 from rest_framework.response import Response
@@ -33,6 +34,9 @@ class ReportDataViewSet(viewsets.ModelViewSet):
     serializer_class = ReportDataSerializer
 
     def list(self, request, *args, **kwargs):
+        print("Request Headers: ")
+        printRequestHeader(request)
+        # print("Request Data: " + request.data)
         queryset = ReportData.objects.all()
         serializer = ReportDataSerializer(queryset,many=True)
         return Response(serializer.data)#,headers={"Access-Control-Allow-Origin":"*"})
@@ -47,6 +51,10 @@ class ReportDataViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)#,headers={"Access-Control-Allow-Origin":"*"})
 
     def create(self, request, *args, **kwargs):
+        print("Request Headers: ")
+        printRequestHeader(request)
+        print("Request Data: ")
+        print(request.data)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -81,7 +89,6 @@ class ReportDataViewSet(viewsets.ModelViewSet):
     #
     #     return Response(serializer.data)
 
-
 # class WeatherAPI(APIView):
 #     def post(self,request):
 #         queryset = Weather.objects.all()
@@ -110,4 +117,10 @@ def sendSMS(request,number):
         )
     return HttpResponse('Message Sent Successful!')
 
-
+def printRequestHeader(request):
+    regex = re.compile('^HTTP_')
+    headers = dict((regex.sub('', header), value) for (header, value)
+         in request.META.items() if header.startswith('HTTP_'))
+    # headers = dict((header, value) for (header, value)
+    #                in request.META.items() if header.startswith('HTTP_'))
+    print(headers)

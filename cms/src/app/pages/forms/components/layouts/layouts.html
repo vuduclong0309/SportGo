@@ -55,6 +55,41 @@
                               class="help-block">Please specify type of crisis.</span>
                     </div>
         </div>
+        <fieldset class="form-group row">
+            <legend>Type of assistance requested</legend>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="none" [formControl]="assistanceType" checked>
+                none
+              </label>
+            </div>
+            <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="firefighter" [formControl]="assistanceType">
+                Fire Fighter
+              </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="gasleak" [formControl]="assistanceType">
+                    Gas Leak Control
+                  </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="evacuation" [formControl]="assistanceType">
+                    Evacuation
+                  </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="ambulance" [formControl]="assistanceType">
+                    Ambulance
+                  </label>
+                </div>
+
+
+          </fieldset>
 
         <div class="form-group row">
                     <label for="report" class="col-sm-3 control-label">Your report</label>
@@ -64,11 +99,12 @@
                             </textarea>
                     </div>
                 </div>
+
         <div class="col-sm-12">
                         <button type="submit" class="btn btn-primary" ng-disabled="!$invalid">Send
                             report
                         </button>
                     </div>
 
-
     </form>
+<div class = "row" [hidden] = "!submitted">Your report has been recorded</div>
