@@ -11,8 +11,11 @@ import {FormReport}  from './formsreport';
 })
 export class AdminComponent {
   public reportList:any;
-  private formsUrl = "http://172.20.114.92:8000/CMS_System/reportList/";
-
+  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/";
+  private crisisUrl = "http://10.27.192.198:8000/CMS_System/getCrisisState/"
+  private feedback: string;
+  private submitted = false;
+  private crisisState = "Unchanged";
   constructor(private _adminService:AdminService, private http:Http) {
   }
 
@@ -28,7 +31,7 @@ export class AdminComponent {
     //console.log("Verify this report: " + message);
     console.log(message["id"]);
 
-    message["verified"] = false;
+    message["verified"] = true;
     //console.log(message);
     let bodyString = JSON.stringify(message); // Stringify payload
     let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
@@ -42,5 +45,50 @@ export class AdminComponent {
                          .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
                          //.catch((error:any) => Observable.throw(error.json().error || 'Server error'))
                          .subscribe(data => console.log(data), error => console.log(error), () => console.log("Put complete"));
+  }
+
+  private deleteReport(message:any) {
+    this.submitted = true;
+    console.log(message["id"]);
+    this.feedback = "Deleted report, please reload the page";
+    let url = this.formsUrl + message["id"] + "/";
+    this.http.delete(url)
+              .map((res:Response) => res.json())
+              .subscribe(data => console.log(data), error => console.log(error), () => console.log("Delete complete"));
+  }
+
+  updateAfterCrisis(){
+    console.log("To here")
+    let body = {'crisisState': "After"};
+    this.crisisState = "After Crisis";
+    this.updateCrisisState(body);
+  }
+
+  updateInCrisis(){
+    let body = {'crisisState': "In"};
+    this.crisisState = "In Crisis";
+    this.updateCrisisState(body);
+  }
+
+  updateBeforeCrisis(){
+    let body = {'crisisState': "Before"};
+    this.crisisState = "Before Crisis";
+    this.updateCrisisState(body);
+  }
+
+  updateCrisisState(body:Object){
+    let bodyString = JSON.stringify(body); // Stringify payload
+    let headers      = new Headers({ 'Content-Type': 'application/json'}); // ... Set content type to JSON
+    let options       = new RequestOptions({ headers: headers }); // Create a request option 
+    console.log("Starting to post a request");
+    console.log(bodyString);
+    this.http.post(this.crisisUrl, bodyString, options) // ...using post request
+                         .map((res:Response) => console.log(res.text())) // ...and calling .json() on the response to return data
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error')).subscribe(data => console.log(data));
+
+    console.log("Post success");
+    this.loadReport();
+    this.submitted = true;
+    this.feedback = "Changed Crisis State to " + this.crisisState;
   }
 }

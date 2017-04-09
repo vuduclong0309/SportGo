@@ -8,7 +8,7 @@ import {FormReport}  from './formsreport';
 @Injectable()
 export class AdminService {
 
-  private formsUrl = "http://172.20.114.92:8000/CMS_System/reportList/";
+  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList";
   public reportList:any;
 
   constructor(private http:Http){}
@@ -20,6 +20,7 @@ export class AdminService {
 
     return this.reportList;
   }
+
 
   deleteCrisis(values:FormReport){
       let index: number = this.reportList.indexOf(values.id);

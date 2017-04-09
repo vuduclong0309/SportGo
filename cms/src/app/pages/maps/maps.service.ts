@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Rx';
 import {Report} from './formreport';
 @Injectable()
 export class MapsService {
-  private formsUrl = "http://172.20.114.92:8000/CMS_System/reportList/";
+  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/verified=True/";
   constructor(private http: Http){};
   getReportList(): Observable<Report[]> {
     return this.http.get(this.formsUrl)

@@ -10,7 +10,7 @@ export class FeedService {
 
   constructor(private http:Http){}
 
-  private formsUrl = "http://172.20.114.92:8000/CMS_System/reportList/";
+  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/";
 
 
   private _data = [

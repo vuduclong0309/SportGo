@@ -11,7 +11,7 @@ import {FormReport}  from './formsreport';
 })
 export class Layouts {
 
-  private formsUrl = "http://172.20.114.92:8000/CMS_System/reportList/";
+  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/";
   public postResponse: any;
   private formToSend = {};
   public error: any;
@@ -101,7 +101,7 @@ export class Layouts {
       "location" : values['location'],
       "description" : values['description'],
       "crisisType" : values['itype'],
-      //"assistanceType" :values['assistanceType'],
+      "assistanceType" :values['assistanceType'],
       "latitude" : this.latitude,
       "longitude" : this.longitude,
 

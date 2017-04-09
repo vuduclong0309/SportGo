@@ -51,6 +51,5 @@ export class Maps {
         return +value;
     }
 
-  //this.reportList = this.mapService.getReportList();
-
+  
 }

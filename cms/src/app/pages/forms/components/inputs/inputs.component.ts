@@ -41,7 +41,7 @@ export class Inputs {
   private hazeReport:any
   private dengueReport:any
   private report:Object
-
+  //
   // variable to share
   public repoUrl = 'https://github.com/Epotignano/ng2-social-share';
   //public repo2 = 'http://10.27.249.249:8080/#/pages/forms/layouts';
@@ -51,11 +51,12 @@ export class Inputs {
 
   constructor(private http:Http,  @Inject(DOCUMENT)private document: any){
     //this.repoUrl = this.document.location.href;
+    this.Reports = this.getForms();
   }
 
   private formsUrl1 = "http://10.27.127.105:8000/CMS_System/reportList/Haze/";
   private formsUrl2 = "http://10.27.127.105:8000/CMS_System/reportList/Dengue/";
-  private formsUrl = "http://10.27.127.105:8000/CMS_System/reportList/"
+  private formsUrl = "http://10.27.192.198:8000/CMS_System/reportList/verified=True/"
   private Reports = this.getForms();
 
 
