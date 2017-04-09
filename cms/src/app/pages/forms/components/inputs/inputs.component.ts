@@ -1,13 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormReport} from '../layouts/formsreport';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
+import { CeiboShare } from 'ng2-social-share';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'inputs',
   templateUrl: './inputs.html',
 })
+
+//@Inject(DOCUMENT)
 export class Inputs {
   /*
   private HAZEREPORT: FormReport[] = [
@@ -38,7 +42,15 @@ export class Inputs {
   private dengueReport:any
   private report:Object
 
-  constructor(private http:Http){}
+  // variable to share
+  public repoUrl = 'https://github.com/Epotignano/ng2-social-share';
+  public imageUrl = 'https://avatars2.githubusercontent.com/u/10674541?v=3&s=200';
+  //public repoUrl:any;
+  //public imageUrl:any;
+
+  constructor(private http:Http,  @Inject(DOCUMENT)private document: any){
+    //this.repoUrl = this.document.location.href;
+  }
 
   private formsUrl1 = "http://10.27.127.105:8000/CMS_System/reportList/Haze/";
   private formsUrl2 = "http://10.27.127.105:8000/CMS_System/reportList/Dengue/";

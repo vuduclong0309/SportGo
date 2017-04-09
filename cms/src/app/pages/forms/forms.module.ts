@@ -5,6 +5,8 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { routing }       from './forms.routing';
 
+import { CeiboShare } from 'ng2-social-share';
+
 import { RatingModule } from 'ng2-bootstrap';
 import { Forms } from './forms.component';
 import { Inputs } from './components/inputs';
@@ -45,7 +47,8 @@ import { WithoutLabelsForm } from './components/layouts/components/withoutLabels
     BlockForm,
     HorizontalForm,
     BasicForm,
-    WithoutLabelsForm
+    WithoutLabelsForm,
+    CeiboShare
   ],
   providers: [
     GeolocationService
