@@ -32,4 +32,8 @@ class ReportData(models.Model):
     latitude = models.TextField(max_length=100,default='0')
 
     def __str__(self):
-        return self.firstName
+        outputStr = 'Reported By: ' + self.firstName + ' ' + self.lastName \
+                          + '\nLocation: ' + self.location + '\nCrisis Type: ' + self.crisisType
+        return outputStr
+
+

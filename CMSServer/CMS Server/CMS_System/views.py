@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import base64
 import re
 import time
 import datetime
@@ -13,7 +14,12 @@ from sendsms import api
 from django.views.decorators.csrf import csrf_exempt
 from sendsms.message import SmsMessage
 from twilio.rest import Client
+import smtplib
+import threading
 # Create your views here.
+
+#exit flag for thread
+exitFlag = False
 
 class WeatherViewSet(viewsets.ModelViewSet):
     queryset = Weather.objects.all()
@@ -39,8 +45,20 @@ class CrisisStateViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         print("Request Headers: ")
         printRequestHeader(request)
+        print
         print("Request Data: ")
         print(request.data)
+        print
+        thread = None
+        if(request.data['crisisState'] == "In"):
+            global exitFlag
+            exitFlag = False
+            thread = SendEmailThread("emailThread")
+            thread.start()
+        else:
+            global exitFlag
+            exitFlag = True
+            print(exitFlag)
         return super(CrisisStateViewSet,self).create(request)
 
 class ReportDataViewSet(viewsets.ModelViewSet):
@@ -105,8 +123,10 @@ class ReportDataViewSet(viewsets.ModelViewSet):
     def update(self, request, *args, **kwargs):
         print("Request Headers: ")
         printRequestHeader(request)
+        print
         print("Request Data: ")
         print(request.data)
+        print
         response = super(ReportDataViewSet,self).update(request)
         if(response):
             if(request.data.has_key('verified') and request.data['verified']) and request.data.has_key('assistanceType') and request.data['assistanceType'] != None:
@@ -165,12 +185,37 @@ def printRequestHeader(request):
     #                in request.META.items() if header.startswith('HTTP_'))
     print(headers)
 
-def pollingCurrentState():
-    while(True):
-        currentState = CrisisState.objects.order_by('-id')[0]
-        if(currentState == 'in'):
-            emailReport()
-            time.sleep(300)
+class SendEmailThread(threading.Thread):
+    def __init__(self,threadName):
+        threading.Thread.__init__(self)
+        self.threadName = threadName
 
-def emailReport():
-    print("send email!")
+    def run(self):
+        print("Starting email thread!")
+        sendEmailEvery5Mins(ReportData,self.threadName)
+        print("Email thread Exited!")
+
+def sendEmailEvery5Mins(reportDataObject,threadName):
+    while(not exitFlag):
+        sendEmail(reportDataObject)
+        time.sleep(5)
+
+def sendEmail(reportDataObject):
+    header = 'From: CMS System <cz3003cmsntu@gmail.com>\n'
+    header += 'To: PM Office <michael.le611@gmail.com>\n'
+    header += 'Cc:\n'
+    header += 'Subject: Crisis Report\n'
+    verifiedReportList = reportDataObject.objects.filter(verified=True)
+    messageBuilder = "\n\nDear PM Office,\n\nHere are the details of current crisis: \n\nTotal Number of Reports Received: %s\n\n" % len(verifiedReportList)
+    for item in verifiedReportList:
+        messageBuilder = messageBuilder + item.__str__() + '\n\n'
+
+    message = header + messageBuilder + "This is an auto-generated email from CMS System\n" + datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + "\n\n"
+    print(message)
+
+    server = smtplib.SMTP('smtp.gmail.com:587')
+    server.starttls()
+    server.login('cz3003cmsntu', base64.b64decode('Y21zMjAxNzMwMDM='))
+    problems = server.sendmail('cz3003cmsntu@gmail.com', 'michael.le611@gmail.com', msg=message)
+    print(message)
+    server.quit()
