@@ -16,6 +16,19 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: 'pmreport',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Prime Minister Report', // menu title
+            icon: 'ion-android-home', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
         path: 'dashboard',
         data: {
           menu: {
