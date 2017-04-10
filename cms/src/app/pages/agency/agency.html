@@ -1,3 +1,13 @@
-<div *ngFor = "let center of AgencyList">
-	{{center.name}} - Telephone number: {{center.tel}}
-</div>
+
+<div class="row">
+      <li class = "col-md-6" *ngFor="let center of AgencyList" style="list-style:none" >
+        <ba-card title="Agency Contact" baCardClass="with-scroll">
+            <article style="font-size:2">
+              <p>Name : {{center.name}}</p>
+              <p>Telephone number : {{center.tel}}</p>
+              <span class="glyphicon glyphicon-envelope"></span>
+             </article>
+            
+        </ba-card>
+      </li>
+    </div>

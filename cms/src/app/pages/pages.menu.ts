@@ -7,7 +7,7 @@ export const PAGES_MENU = [
         data: { // custom menu declaration
           menu: {
             title: 'Admin Control', // menu title
-            icon: 'ion-android-home', // menu icon
+            icon: 'ion-android-star', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
@@ -20,7 +20,7 @@ export const PAGES_MENU = [
         data: { // custom menu declaration
           menu: {
             title: 'Prime Minister Report', // menu title
-            icon: 'ion-android-home', // menu icon
+            icon: 'ion-document-text', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
@@ -45,7 +45,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Contact Agency',
-            icon: 'ion-edit',
+            icon: 'ion-android-call',
             selected: false,
             expanded: false,
             order: 100,

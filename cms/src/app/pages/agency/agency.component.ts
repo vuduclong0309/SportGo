@@ -21,7 +21,7 @@ export class Agency {
   			tel: "+123 345 6789",
   		},
   		{
-  			name: "",
+  			name: "Fire Fighter",
   			tel: "+123 345 6789",
   		}
   		
