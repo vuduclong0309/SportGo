@@ -1,14 +1,22 @@
-
-<div class = "container">
-	<div class = "row"> <h3> State of the application: {{crisisState}} Crisis </h3> </div>
-	<h3> List of verified crisis report </h3>
-	<div *ngFor="let message of reportList | async">
-    	<div class="row">
-        	<span class = "col-sm-4"> Location: {{message.location}} </span>
-        	<span class = "col-sm-2"> Type: {{message.crisisType}} </span>
-        	<span class = "col-sm-2"> By: {{message.firstName}} {{message.lastName}} </span>
-      	</div>
-      	<br>
-  	</div>
-  	<h3> This report would be auto generated and sent to PM Office every 30 minutes </h3>
+<div clas="widget">
+	<ba-card title="Prime Minister Report">
+		<div class="row" style="text-align:center"><h1> System State: {{crisisState}} Crisis </h1></div>
+		<br>
+		<div class="row" style="text-align:center"><h2> Number of Report Received : {{ (reportList | async)?.length }} </h2></div>
+		<div class="row" style="text-align:center"><h2> Number of Report Verified : {{ (reportListVerified | async)?.length }} </h2></div>
+		<br>
+		<div class="row" style="text-align:center"><h3> List of verified crisis report</h3></div>
+		<div class="row">
+			<li class="col-md-6" *ngFor="let message of reportListVerified | async" style="list-style:none">
+		    	<ba-card title="Verified Report" baCardClass="with-scroll">
+						<article>
+		        	<p> Location: {{message.location}} </p>
+		        	<p> Type: {{message.crisisType}} </p>
+		        	<p> By: {{message.firstName}} {{message.lastName}} </p>
+						</article>
+		      </ba-card>
+		  </li>
+		</div>
+	  <div class="row" style="text-align:center"><h3> This report would be auto generated and sent to PM Office every 30 minutes when the system is in Crisis</h3></div>
+	</ba-card>
 </div>

@@ -11,7 +11,7 @@ export class FeedService {
 
   constructor(private http:Http){}
 
-  private formsUrl = BASEURL + "reportList/";
+  private formsUrl = BASEURL + "reportList/verified=True";
 
 
   private _data = [

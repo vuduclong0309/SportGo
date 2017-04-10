@@ -9,15 +9,17 @@ import {FormReport}  from './formreport';
 
 @Component({
   selector: 'pmreport',
-  templateUrl: 'pmreport.html' 
+  templateUrl: 'pmreport.html'
 })
 export class PMReportComponent {
   private crisisUrl = BASEURL + "getCrisisState/";
-  reportList: any;
-  public crisisState:any;
-  
+  private reportListVerified: any;
+  private reportList: any;
+  public crisisState: any;
+
     constructor(private http:Http, pmservice: PMReportService) {
-        this.getCrisisState();
+        this.crisisState = this.getCrisisState();
+        this.reportListVerified = pmservice.getReportListVerified();
         this.reportList = pmservice.getReportList();
         //console.log()
     }
@@ -29,4 +31,5 @@ export class PMReportComponent {
                     //.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
         console.log(this.crisisState);
   }
+
 }

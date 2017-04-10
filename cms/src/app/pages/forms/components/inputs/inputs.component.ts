@@ -15,43 +15,20 @@ import { BASEURL } from '../../../baseURL';
 //@Inject(DOCUMENT)
 export class Inputs {
 
-  private HAZEREPORT: FormReport[] = [
-      {id : "Report-No1", firstName : "Phan Anh" , lastName : "Tuan" , telephone : "+(65) 97742291", location : "NTU Hall 14",
-       description : "A Strong Haze Status nearby. Feel very bad when stepping out from your room. Everyone around should take care yourself",
-        crisisType : "Haze" , crisisState : "Before Crisis"},
-      {id : "Report-No5", firstName : "Vu" , lastName : "Duc Long" , telephone : "91238762", location : "City Hall",
-        description : "Heavy Haze right outside of windows of company. Expand from my home to workplace (Clementi to City Hall)",
-        crisisType : "Haze" , crisisState : "In Crisis"},
-      {id : "Report-No8", firstName : "Doan Do" , lastName : "Bao Nguyen" , telephone : "97744001", location : "Pasir Ris",
-         description : "Stay in hall with my computer. Avoid any action outdoor since it will harm your health very bad",
-        crisisType : "Haze" , crisisState : "Before Crisis"}
-  ];
-
-  private DENGUEREPORT : FormReport[] = [
-    {id : "Report-No3", firstName : "Nguyen" , lastName : "Minh Duc" , telephone : "87742351", location : "Woodland",
-     description : "Mostique all around. Everyone should find a way to reduce them",
-     crisisType : "Dengue" , crisisState : "Before Crisis"},
-    {id : "Report-No4", firstName : "Micheal" , lastName : "Le" , telephone : "91358262", location : "Marina Bay Sand",
-      description : "Dengue and Heavy Dengue",
-      crisisType : "Dengue" , crisisState : "Before Crisis"},
-    {id : "Report-No10", firstName : "Tran Truong" , lastName : "Giang" , telephone : "94244091", location : "NTU Hall 10",
-       description : "Should stay in hall",
-       crisisType : "Dengue" , crisisState : "After Crisis"}
-  ];
 
   private hazeReport:any
   private dengueReport:any
   private report:Object
   //
   // variable to share
-  public repoUrl = 'https://github.com/Epotignano/ng2-social-share';
+  //public repoUrl = 'https://github.com/Epotignano/ng2-social-share';
   //public repo2 = 'http://10.27.249.249:8080/#/pages/forms/layouts';
   //public imageUrl = 'https://avatars2.githubusercontent.com/u/10674541?v=3&s=200';
-  //public repoUrl:any;
+  public repoUrl:any;
   //public imageUrl:any;
 
   constructor(private http:Http,  @Inject(DOCUMENT)private document: any){
-    //this.repoUrl = this.document.location.href;
+    this.repoUrl = this.document.location.href;
     this.Reports = this.getForms();
   }
 
