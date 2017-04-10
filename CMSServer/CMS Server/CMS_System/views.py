@@ -1,5 +1,7 @@
 from django.shortcuts import render
 import re
+import time
+import datetime
 from django.http import HttpResponse
 from rest_framework import viewsets,status
 from rest_framework.response import Response
@@ -58,7 +60,7 @@ class ReportDataViewSet(viewsets.ModelViewSet):
             parameter = int(self.kwargs['pk'])
             return super(ReportDataViewSet, self).retrieve(request, *args, **kwargs)
         except Exception as e:
-            print(self.kwargs['pk'])
+            #print(self.kwargs['pk'])
             parameter = self.kwargs['pk'].split('=')
             retrieveType = parameter[0]
             retrieveData = parameter[1]
@@ -162,3 +164,13 @@ def printRequestHeader(request):
     # headers = dict((header, value) for (header, value)
     #                in request.META.items() if header.startswith('HTTP_'))
     print(headers)
+
+def pollingCurrentState():
+    while(True):
+        currentState = CrisisState.objects.order_by('-id')[0]
+        if(currentState == 'in'):
+            emailReport()
+            time.sleep(300)
+
+def emailReport():
+    print("send email!")
