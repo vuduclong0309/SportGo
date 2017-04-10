@@ -12,15 +12,17 @@ import {FormReport}  from './formreport';
   templateUrl: 'pmreport.html' 
 })
 export class PMReportComponent {
-  crisisState: any;
-  reportList: any;
   private crisisUrl = BASEURL + "getCrisisState/";
-  constructor(private http:Http, pmservice: PMReportService) {
-    this.crisisState = this.getCrisisState();
-    this.reportList = pmservice.getReportList();
-  }
+  reportList: any;
+  public crisisState:any;
+  
+    constructor(private http:Http, pmservice: PMReportService) {
+        this.getCrisisState();
+        this.reportList = pmservice.getReportList();
+        //console.log()
+    }
 
-  getCrisisState(): void {
+    getCrisisState(): void {
       this.http.get(this.crisisUrl)
                     .map((res:Response) => res.json())
                     .subscribe((data:any) => {this.crisisState = data.crisisState});

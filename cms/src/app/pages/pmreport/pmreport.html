@@ -1,1 +1,13 @@
-<div> {{CrisisState}} </div>
+
+<div class = "container">
+	<div class = "row"> <h3> State of the application: {{crisisState}} Crisis </h3> </div>
+	<h3> List of verified crisis report </h3>
+	<div *ngFor="let message of reportList | async">
+    	<div class="row">
+        	<span class = "col-sm-4"> Location: {{message.location}} </span>
+        	<span class = "col-sm-2"> Type: {{message.crisisType}} </span>
+        	<span class = "col-sm-2"> By: {{message.firstName}} {{message.lastName}} </span>
+      	</div>
+      	<br>
+  </div>
+</div>
